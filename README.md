@@ -363,3 +363,50 @@
 | **Tên chức năng** | **Mô tả** | **Thành công** | **Thất bại** |
 | :--- | :--- | :--- | :--- |
 | **Tìm kiếm** | Tra cứu nhanh. | Ra kết quả đúng điểm đến cần tìm. | Không tìm thấy, báo lỗi. |
+
+### 3.8. Quản lý lễ hội và sự kiện
+
+| **Tên Use case** | **Quản lý lễ hội và sự kiện** |
+| :--- | :--- |
+| **Mô tả** | Chuyên viên quản lý nghiệp vụ hoặc quản trị viên thực hiện xem danh sách, tìm kiếm, lọc thông tin các lễ hội và sự kiện văn hóa, du lịch trên địa bàn. |
+| **Tác nhân** | Chuyên viên quản lý nghiệp vụ, Quản trị viên hệ thống |
+| **Độ phức tạp** | 🔲 Đơn giản  ☑️ Trung bình  🔲 Phức tạp |
+| **Điều kiện bắt đầu** | Người dùng đăng nhập thành công, có quyền truy cập vào module Lễ hội & Sự kiện. |
+| **Điều kiện kết thúc** | Xem được danh sách các lễ hội và sự kiện trên hệ thống theo các tiêu chí tìm kiếm. |
+| **Kịch bản chính** | 1. Truy cập menu "Lễ hội & Sự kiện".<br>2. Hệ thống hiển thị danh sách các lễ hội, sự kiện sắp, đang và đã diễn ra.<br>3. Người dùng nhập từ khóa tìm kiếm hoặc chọn bộ lọc (thời gian, trạng thái, phân loại) để tra cứu.<br>4. Hệ thống trả về kết quả danh sách sự kiện phù hợp. |
+| **Kịch bản phụ** | - *Không tìm thấy kết quả:* Hệ thống thông báo "Không tìm thấy dữ liệu" nếu từ khóa hoặc bộ lọc không khớp với bất kỳ sự kiện nào. |
+| **Các yêu cầu, ràng buộc** | Danh sách cần được sắp xếp mặc định theo thứ tự thời gian ưu tiên các sự kiện sắp và đang diễn ra. |
+
+---
+
+#### a. Danh sách Lễ hội và Sự kiện
+
+| **Màn hình** | **Danh sách lễ hội và sự kiện** |
+| :--- | :--- |
+| **Mô tả** | Giao diện quản lý danh sách tổng hợp các sự kiện văn hóa, thể thao, du lịch và các lễ hội truyền thống, hiện đại. |
+| **Màn hình kết nối** | (Không có) |
+
+**Nội dung màn hình:**
+
+| **Item** | **Kiểu dữ liệu** | **Mô tả** |
+| :--- | :--- | :--- |
+| Tìm kiếm | Textfield – String | Nhập tên sự kiện hoặc lễ hội để tìm kiếm nhanh. |
+| Phân loại sự kiện | Combobox – String | Lọc theo: Tất cả, Lễ hội truyền thống, Sự kiện văn hóa, Sự kiện thể thao... |
+| Trạng thái | Combobox – String | Lọc theo trạng thái thời gian: Sắp diễn ra, Đang diễn ra, Đã kết thúc. |
+| Thời gian tổ chức | Date Range Picker | Lọc các sự kiện diễn ra trong một khoảng thời gian cụ thể (Từ ngày - Đến ngày). |
+| Thêm sự kiện mới | Button | Nút mở giao diện tạo mới sự kiện (nếu có quyền). |
+| Bảng danh sách | Table | Khung hiển thị thông tin danh sách các sự kiện/lễ hội. |
+| *STT* | Label – Number | Số thứ tự dòng. |
+| *Hình ảnh* | Image | Ảnh đại diện thu nhỏ (thumbnail) của sự kiện quảng bá. |
+| *Tên sự kiện/Lễ hội* | Link | Tên chính thức của sự kiện. |
+| *Thời gian tổ chức* | Label – String | Hiển thị Ngày bắt đầu - Ngày kết thúc. |
+| *Địa điểm* | Label – String | Khu vực hoặc địa chỉ tổ chức sự kiện. |
+| *Trạng thái* | Badge | Nhãn hiển thị trạng thái (Màu xanh: Đang diễn ra, Vàng: Sắp diễn ra, Xám: Đã kết thúc). |
+| *Thao tác* | Icon Buttons | Biểu tượng Xem chi tiết, Sửa (Hình bút), Xóa (Hình thùng rác). |
+| Phân trang | Pagination | Các nút điều hướng chuyển trang (1, 2, 3, Next, Previous). |
+
+**Các chức năng màn hình:**
+
+| **Tên chức năng** | **Mô tả** | **Thành công** | **Thất bại** |
+| :--- | :--- | :--- | :--- |
+| **Tìm kiếm & Lọc** | Tra cứu sự kiện theo tên, phân loại, trạng thái và thời gian. | Bảng dữ liệu tự động tải lại và hiển thị đúng danh sách kết quả phù hợp với các tiêu chí. | Hiển thị bảng trống kèm thông báo không có dữ liệu phù hợp. |
