@@ -327,9 +327,7 @@
 | Tổng số cơ sở lưu trú | Card – Number | Khối hiển thị tổng số lượng cơ sở lưu trú thực tế đang hoạt động thuộc tất cả các loại hình (VD: 23). |
 | Thanh phân trang | Pagination | Các nút điều hướng chuyển trang dữ liệu (1, 2, 3...) và dòng thông báo số lượng bản ghi. |
 
-**Các chức năng màn hình:**
-# Script to generate the analysis for sections 3.3.4, 3.3.5, and 3.3.6
-markdown_content_categories = """### 3.3.4. Loại hình dịch vụ
+### 3.3.4. Loại hình dịch vụ
 
 | **Tên Use case** | **Quản lý danh mục Loại hình dịch vụ** |
 | :--- | :--- |
@@ -403,9 +401,8 @@ markdown_content_categories = """### 3.3.4. Loại hình dịch vụ
 | Nút Thêm Mới | Button | Nút bấm để thực hiện thêm mới danh mục điểm đến. |
 | Bảng điểm đến | Table | Danh sách các loại hình điểm đến du lịch. |
 | *STT* | Label – Number | Số thứ tự dòng. |
-| *Tên công ty/Cơ sở* | Label – String | Tên loại hình điểm đến (VD: Đại Nội Huế, Chùa Thiên Mụ, Khu du lịch Alba Thanh Tân). |
-| *Địa chỉ* | Label – String | Vị trí tọa lạc của điểm đến tiêu biểu. |
-| *Loại hình* | Label – String | Phân loại điểm đến (VD: Di tích lịch sử - Văn hóa, Di tích tôn giáo - Tâm linh). |
+| *Mã phân loại* | Label – String | Mã định danh hệ thống cho loại hình điểm đến. |
+| *Tên loại hình* | Label – String | Tên danh mục điểm đến (VD: Di tích lịch sử - văn hóa, Danh lam thắng cảnh). |
 | *Thao tác* | Icon Buttons | Biểu tượng Sửa hoặc Xóa bản ghi. |
 | Thanh phân trang | Pagination | Các nút điều hướng trang (1, 2, 3...). |
 
@@ -424,7 +421,7 @@ markdown_content_categories = """### 3.3.4. Loại hình dịch vụ
 | :--- | :--- |
 | **Mô tả** | Quản lý danh sách các tiện ích đi kèm của cơ sở dịch vụ/điểm đến (VD: Wifi, Hồ bơi, Nhà hàng, Spa...) để đồng bộ hiển thị icon tiện ích trên ứng dụng du khách. |
 | **Tác nhân** | Quản trị viên hệ thống (Admin) |
-| **Độ phức tạp** | ☑️ Đơn giản  🔲 Trung bình  🔲 Phuyết |
+| **Độ phức tạp** | ☑️ Đơn giản  🔲 Trung bình  🔲 Phức tạp |
 | **Điều kiện bắt đầu** | Admin truy cập menu "Quản lý danh mục" &rarr; "Các tiện ích". |
 | **Điều kiện kết thúc** | Danh sách tiện ích và biểu tượng tương ứng được hiển thị rõ ràng. |
 
@@ -458,15 +455,5 @@ markdown_content_categories = """### 3.3.4. Loại hình dịch vụ
 | **Tên chức năng** | **Mô tả** | **Thành công** | **Thất bại** |
 | :--- | :--- | :--- | :--- |
 | **Tìm kiếm tiện ích** | Lọc dữ liệu theo tên tiện ích. | Bảng dữ liệu tự động cập nhật kết quả. | Không có dữ liệu phù hợp. |
-"""
-
-# Saving the content to a file
-filename = "Thiet_Ke_Chi_Tiet_DanhMuc_334_336.md"
-with open(filename, "w", encoding="utf-8") as f:
-    f.write(markdown_content_categories)
-
-print(f"File saved successfully as {filename}")
-| **Tên chức năng** | **Mô tả** | **Thành công** | **Thất bại** |
-| :--- | :--- | :--- | :--- |
 | **Điều hướng danh sách** | Xem các danh sách phân loại qua tính năng phân trang. | Bảng dữ liệu tự động tải danh sách mới theo trang. | (Không có dữ liệu, bảng trống) |
 
