@@ -328,7 +328,144 @@
 | Thanh phân trang | Pagination | Các nút điều hướng chuyển trang dữ liệu (1, 2, 3...) và dòng thông báo số lượng bản ghi. |
 
 **Các chức năng màn hình:**
+# Script to generate the analysis for sections 3.3.4, 3.3.5, and 3.3.6
+markdown_content_categories = """### 3.3.4. Loại hình dịch vụ
 
+| **Tên Use case** | **Quản lý danh mục Loại hình dịch vụ** |
+| :--- | :--- |
+| **Mô tả** | Quản trị viên hệ thống thực hiện tra cứu, theo dõi và quản lý các loại hình dịch vụ du lịch (VD: Lữ hành, Ăn uống, Mua sắm, Vận chuyển...) để chuẩn hóa dữ liệu dịch vụ trên toàn hệ thống. |
+| **Tác nhân** | Quản trị viên hệ thống (Admin) |
+| **Độ phức tạp** | ☑️ Đơn giản  🔲 Trung bình  🔲 Phức tạp |
+| **Điều kiện bắt đầu** | Admin đăng nhập thành công và truy cập menu "Quản lý danh mục" &rarr; "Loại hình dịch vụ". |
+| **Điều kiện kết thúc** | Danh sách các loại hình dịch vụ được hiển thị đầy đủ và chính xác. |
+
+---
+
+#### a. Danh sách Loại hình dịch vụ
+
+<p align="center"><i>Hình 3.20: Giao diện Danh sách Loại hình dịch vụ du lịch</i></p>
+
+| **Màn hình** | **Danh sách Loại hình dịch vụ du lịch** |
+| :--- | :--- |
+| **Mô tả** | Màn hình quản trị hiển thị danh sách các phân loại dịch vụ du lịch đang được áp dụng trên hệ thống CSDL. |
+| **Màn hình kết nối** | (Không có biểu mẫu chi tiết trong thiết kế giao diện) |
+
+**Nội dung màn hình:**
+
+| **Item** | **Kiểu dữ liệu** | **Mô tả** |
+| :--- | :--- | :--- |
+| Ô tìm kiếm nhanh | Textfield – String | Tìm kiếm loại hình dịch vụ theo tên hoặc mã loại. |
+| Nút Thêm Mới | Button | Nút chức năng dùng để khởi tạo thêm loại hình dịch vụ mới. |
+| Bảng loại hình dịch vụ | Table | Khung hiển thị danh sách các loại hình dịch vụ. |
+| *STT* | Label – Number | Số thứ tự dòng. |
+| *Mã loại* | Label – String | Mã định danh hệ thống của loại dịch vụ (VD: 64e3c812). |
+| *Tên loại* | Label – String | Tên gọi của dịch vụ (VD: Lữ hành, Ăn uống, Mua sắm, Vận chuyển). |
+| *Thao tác* | Icon Buttons | Biểu tượng Sửa hoặc Xóa bản ghi. |
+| Thẻ Tổng số loại hình | Card – Number | Khối thống kê tổng số lượng loại hình dịch vụ (Giá trị: 5). |
+| Thẻ Tổng số cơ sở | Card – Number | Khối thống kê tổng số lượng cơ sở cung cấp dịch vụ tương ứng (Giá trị: 35). |
+| Thanh phân trang | Pagination | Các nút điều hướng chuyển trang dữ liệu (1, 2, 3...). |
+
+**Các chức năng màn hình:**
+
+| **Tên chức năng** | **Mô tả** | **Thành công** | **Thất bại** |
+| :--- | :--- | :--- | :--- |
+| **Tra cứu danh mục** | Lọc dữ liệu theo từ khóa nhập vào ô tìm kiếm. | Bảng dữ liệu cập nhật đúng các loại hình cần tìm. | Không tìm thấy kết quả, bảng trả về trống. |
+
+---
+---
+
+### 3.3.5. Loại hình điểm đến
+
+| **Tên Use case** | **Quản lý danh mục Loại hình điểm đến** |
+| :--- | :--- |
+| **Mô tả** | Quản trị viên thực hiện quản lý danh mục phân loại các điểm đến du lịch (VD: Di tích lịch sử, Văn hóa, Tâm linh, Vui chơi - Giải trí...) để phục vụ việc gán nhãn dữ liệu. |
+| **Tác nhân** | Quản trị viên hệ thống (Admin) |
+| **Độ phức tạp** | ☑️ Đơn giản  🔲 Trung bình  🔲 Phức tạp |
+| **Điều kiện bắt đầu** | Admin đăng nhập và truy cập menu "Quản lý danh mục" &rarr; "Loại hình điểm đến". |
+| **Điều kiện kết thúc** | Thông tin danh mục loại hình điểm đến được hiển thị phục vụ công tác quản lý. |
+
+---
+
+#### a. Danh sách Loại hình điểm đến
+
+<p align="center"><i>Hình 3.21: Giao diện Danh sách Loại hình điểm đến</i></p>
+
+| **Màn hình** | **Danh sách Loại hình điểm đến** |
+| :--- | :--- |
+| **Mô tả** | Giao diện hiển thị các danh mục phân loại điểm đến du lịch được số hóa trên hệ thống. |
+| **Màn hình kết nối** | (Không có biểu mẫu chi tiết trong thiết kế giao diện) |
+
+**Nội dung màn hình:**
+
+| **Item** | **Kiểu dữ liệu** | **Mô tả** |
+| :--- | :--- | :--- |
+| Bộ lọc Loại hình | Combobox | Lọc nhanh danh sách theo phân loại điểm đến. |
+| Nút Thêm Mới | Button | Nút bấm để thực hiện thêm mới danh mục điểm đến. |
+| Bảng điểm đến | Table | Danh sách các loại hình điểm đến du lịch. |
+| *STT* | Label – Number | Số thứ tự dòng. |
+| *Tên công ty/Cơ sở* | Label – String | Tên loại hình điểm đến (VD: Đại Nội Huế, Chùa Thiên Mụ, Khu du lịch Alba Thanh Tân). |
+| *Địa chỉ* | Label – String | Vị trí tọa lạc của điểm đến tiêu biểu. |
+| *Loại hình* | Label – String | Phân loại điểm đến (VD: Di tích lịch sử - Văn hóa, Di tích tôn giáo - Tâm linh). |
+| *Thao tác* | Icon Buttons | Biểu tượng Sửa hoặc Xóa bản ghi. |
+| Thanh phân trang | Pagination | Các nút điều hướng trang (1, 2, 3...). |
+
+**Các chức năng màn hình:**
+
+| **Tên chức năng** | **Mô tả** | **Thành công** | **Thất bại** |
+| :--- | :--- | :--- | :--- |
+| **Xem danh sách** | Tải dữ liệu danh mục khi vào trang. | Danh sách hiển thị đầy đủ thông tin từ CSDL. | Lỗi kết nối, không tải được bảng dữ liệu. |
+
+---
+---
+
+### 3.3.6. Các tiện ích
+
+| **Tên Use case** | **Quản lý danh mục Các tiện ích** |
+| :--- | :--- |
+| **Mô tả** | Quản lý danh sách các tiện ích đi kèm của cơ sở dịch vụ/điểm đến (VD: Wifi, Hồ bơi, Nhà hàng, Spa...) để đồng bộ hiển thị icon tiện ích trên ứng dụng du khách. |
+| **Tác nhân** | Quản trị viên hệ thống (Admin) |
+| **Độ phức tạp** | ☑️ Đơn giản  🔲 Trung bình  🔲 Phuyết |
+| **Điều kiện bắt đầu** | Admin truy cập menu "Quản lý danh mục" &rarr; "Các tiện ích". |
+| **Điều kiện kết thúc** | Danh sách tiện ích và biểu tượng tương ứng được hiển thị rõ ràng. |
+
+---
+
+#### a. Danh sách Các tiện ích
+
+<p align="center"><i>Hình 3.22: Giao diện Danh sách Danh mục Các tiện ích</i></p>
+
+| **Màn hình** | **Danh sách Danh mục Các tiện ích** |
+| :--- | :--- |
+| **Mô tả** | Màn hình hiển thị các tiện ích dịch vụ cùng biểu tượng (icon) đại diện phục vụ việc hiển thị trên bản đồ số và ứng dụng di động. |
+| **Màn hình kết nối** | (Không có biểu mẫu chi tiết trong thiết kế giao diện) |
+
+**Nội dung màn hình:**
+
+| **Item** | **Kiểu dữ liệu** | **Mô tả** |
+| :--- | :--- | :--- |
+| Tìm kiếm tiện ích | Textfield – String | Tìm tên tiện ích (VD: Wifi, Hồ bơi). |
+| Nút Thêm Mới | Button | Nút bấm để tạo mới tiện ích. |
+| Bảng tiện ích | Table | Khung hiển thị các nhãn tiện ích hiện có. |
+| *STT* | Label – Number | Số thứ tự. |
+| *Biểu tượng* | Icon / Image | Hình ảnh icon đại diện cho tiện ích. |
+| *Tên tiện ích* | Label – String | Tên gọi của tiện ích (VD: Wifi, Hồ bơi, Massage/Spa). |
+| *Mô tả* | Label – String | Diễn giải ngắn gọn về tiện ích. |
+| *Thao tác* | Icon Buttons | Biểu tượng Sửa hoặc Xóa. |
+| Thanh phân trang | Pagination | Các nút điều hướng trang. |
+
+**Các chức năng màn hình:**
+
+| **Tên chức năng** | **Mô tả** | **Thành công** | **Thất bại** |
+| :--- | :--- | :--- | :--- |
+| **Tìm kiếm tiện ích** | Lọc dữ liệu theo tên tiện ích. | Bảng dữ liệu tự động cập nhật kết quả. | Không có dữ liệu phù hợp. |
+"""
+
+# Saving the content to a file
+filename = "Thiet_Ke_Chi_Tiet_DanhMuc_334_336.md"
+with open(filename, "w", encoding="utf-8") as f:
+    f.write(markdown_content_categories)
+
+print(f"File saved successfully as {filename}")
 | **Tên chức năng** | **Mô tả** | **Thành công** | **Thất bại** |
 | :--- | :--- | :--- | :--- |
 | **Điều hướng danh sách** | Xem các danh sách phân loại qua tính năng phân trang. | Bảng dữ liệu tự động tải danh sách mới theo trang. | (Không có dữ liệu, bảng trống) |
