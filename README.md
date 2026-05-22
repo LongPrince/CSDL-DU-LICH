@@ -406,6 +406,101 @@
 | Phân trang | Pagination | Các nút điều hướng chuyển trang (1, 2, 3, Next, Previous). |
 
 **Các chức năng màn hình:**
+### 3.9. Quản lý phản hồi
+
+#### 3.9.1. Quản lý phản hồi quản trị viên
+
+| **Tên Use case** | **Quản lý phản hồi quản trị viên** |
+| :--- | :--- |
+| **Mô tả** | Quản trị viên hệ thống hoặc chuyên viên thực hiện xem danh sách, tìm kiếm, phân loại và theo dõi trạng thái xử lý các phản hồi, góp ý, báo lỗi hoặc khiếu nại từ du khách và doanh nghiệp gửi lên hệ thống. |
+| **Tác nhân** | Quản trị viên hệ thống (Admin), Chuyên viên quản lý nghiệp vụ |
+| **Độ phức tạp** | 🔲 Đơn giản  ☑️ Trung bình  🔲 Phức tạp |
+| **Điều kiện bắt đầu** | Quản trị viên đăng nhập thành công và truy cập vào phân hệ Quản lý phản hồi của Admin. |
+| **Điều kiện kết thúc** | Xem và lọc được danh sách các phản hồi cần xử lý trên toàn hệ thống. |
+| **Kịch bản chính** | 1. Chọn menu "Quản lý phản hồi" $\rightarrow$ Hệ thống hiển thị danh sách tất cả phản hồi của người dùng.<br>2. Admin sử dụng bộ lọc (Trạng thái, Phân loại) hoặc ô Tìm kiếm để tra cứu phản hồi cụ thể.<br>3. Hệ thống hiển thị danh sách kết quả tương ứng kèm thông tin chi tiết của phản hồi. |
+| **Kịch bản phụ** | - *Không có dữ liệu:* Bộ lọc không khớp với phản hồi nào $\rightarrow$ Hệ thống hiển thị thông báo "Không có dữ liệu phù hợp". |
+| **Các yêu cầu, ràng buộc** | Các phản hồi mới gửi cần được đánh dấu nổi bật (chữ đậm hoặc icon chưa đọc) và xếp lên đầu danh sách. |
+
+---
+
+##### a. Giao diện danh sách Phản hồi Quản trị viên
+
+| **Màn hình** | **Danh sách phản hồi quản trị viên** |
+| :--- | :--- |
+| **Mô tả** | Màn hình trung tâm giúp Admin theo dõi toàn bộ ý kiến đóng góp, khiếu nại của du khách và doanh nghiệp gửi về cổng thông tin du lịch. |
+| **Màn hình kết nối** | (Không có) |
+
+**Nội dung màn hình:**
+
+| **Item** | **Kiểu dữ liệu** | **Mô tả** |
+| :--- | :--- | :--- |
+| Tìm kiếm | Textfield – String | Nhập tên người gửi, tiêu đề hoặc nội dung để tìm kiếm nhanh. |
+| Loại phản hồi | Combobox – String | Lọc theo loại: Tất cả, Góp ý, Khiếu nại, Báo lỗi hệ thống. |
+| Trạng thái xử lý | Combobox – String | Lọc theo: Chưa xử lý, Đang xử lý, Đã xử lý / Đã trả lời. |
+| Thời gian gửi | Date Range Picker | Chọn khoảng thời gian nhận phản hồi (Từ ngày - Đến ngày). |
+| Bảng danh sách phản hồi | Table | Khung hiển thị danh sách phản hồi tổng hợp. |
+| *STT* | Label – Number | Số thứ tự dòng. |
+| *Người gửi* | Label – String | Họ tên du khách hoặc Tên doanh nghiệp gửi phản hồi. |
+| *Phân loại* | Badge | Loại phản hồi (Màu đỏ: Khiếu nại, Màu xanh: Góp ý, Màu vàng: Báo lỗi). |
+| *Tiêu đề / Nội dung* | Text – String | Tiêu đề tóm tắt và một đoạn ngắn nội dung phản hồi. |
+| *Ngày gửi* | Label – Date | Thời gian người dùng gửi phản hồi lên hệ thống. |
+| *Trạng thái* | Badge | Trạng thái xử lý (Chưa xử lý / Đã xử lý). |
+| *Thao tác* | Icon Buttons | Biểu tượng Xem & Phản hồi (Hình hộp thư/Xem), Ẩn/Xóa (Thùng rác). |
+| Phân trang | Pagination | Các nút chuyển trang (1, 2, 3...). |
+
+**Các chức năng màn hình:**
+
+| **Tên chức năng** | **Mô tả** | **Thành công** | **Thất bại** |
+| :--- | :--- | :--- | :--- |
+| **Tìm kiếm & Bộ lọc** | Tra cứu danh sách phản hồi theo tiêu chí chọn. | Bảng dữ liệu cập nhật chính xác các phản hồi thỏa mãn bộ lọc. | Không có dữ liệu phù hợp $\rightarrow$ Hiển thị bảng trống. |
+
+---
+---
+
+#### 3.9.2. Quản lý phản hồi doanh nghiệp
+
+| **Tên Use case** | **Quản lý phản hồi doanh nghiệp** |
+| :--- | :--- |
+| **Mô tả** | Đại diện doanh nghiệp (Nhà hàng, khách sạn, lữ hành) thực hiện xem danh sách, theo dõi các đánh giá, bình luận và phản hồi từ khách du lịch trực tiếp đối với cơ sở dịch vụ của mình. |
+| **Tác nhân** | Chủ cơ sở / Quản lý Doanh nghiệp dịch vụ |
+| **Độ phức tạp** | 🔲 Đơn giản  ☑️ Trung bình  🔲 Phức tạp |
+| **Điều kiện bắt đầu** | Tài khoản doanh nghiệp đăng nhập thành công và truy cập module Phản hồi & Đánh giá của cơ sở. |
+| **Điều kiện kết thúc** | Xem được danh sách các đánh giá, phản hồi của khách hàng đối với dịch vụ của doanh nghiệp mình. |
+| **Kịch bản chính** | 1. Doanh nghiệp chọn menu "Đánh giá & Phản hồi".<br>2. Hệ thống hiển thị danh sách các lượt đánh giá (số sao) và bình luận từ du khách dành cho cơ sở.<br>3. Doanh nghiệp sử dụng bộ lọc theo mức độ đánh giá (số sao) hoặc trạng thái để kiểm tra danh sách. |
+| **Kịch bản phụ** | - *Lỗi kết nối:* Không tải được danh sách đánh giá $\rightarrow$ Hệ thống hiển thị thông báo thử lại sau. |
+| **Các yêu cầu, ràng buộc** | Doanh nghiệp chỉ có quyền xem và phản hồi các đánh giá thuộc về cơ sở của mình, không được xem dữ liệu của doanh nghiệp khác. |
+
+---
+
+##### a. Giao diện danh sách Phản hồi Doanh nghiệp
+
+| **Màn hình** | **Danh sách phản hồi & Đánh giá của doanh nghiệp** |
+| :--- | :--- |
+| **Mô tả** | Giao diện dành riêng cho tài khoản doanh nghiệp để theo dõi mức độ hài lòng (số sao) và ý kiến của khách hàng về dịch vụ của mình. |
+| **Màn hình kết nối** | (Không có) |
+
+**Nội dung màn hình:**
+
+| **Item** | **Kiểu dữ liệu** | **Mô tả** |
+| :--- | :--- | :--- |
+| Ô tìm kiếm | Textfield – String | Nhập tên khách hàng hoặc từ khóa trong bình luận để tìm kiếm. |
+| Bộ lọc số sao (Đánh giá) | Combobox – String | Lọc theo số sao: Tất cả, 5 Sao, 4 Sao, 3 Sao, 2 Sao, 1 Sao. |
+| Trạng thái trả lời | Combobox – String | Lọc theo: Chưa phản hồi, Đã phản hồi khách hàng. |
+| Bảng danh sách đánh giá | Table | Khung hiển thị danh sách ý kiến/đánh giá của khách. |
+| *STT* | Label – Number | Số thứ tự dòng. |
+| *Khách hàng* | Label – String | Tên tài khoản du khách đã thực hiện đánh giá. |
+| *Mức độ đánh giá* | Rating Stars | Hiển thị số sao định lượng (Biểu tượng ngôi sao vàng từ 1 đến 5). |
+| *Nội dung bình luận* | Text – String | Chi tiết ý kiến đóng góp, nhận xét của du khách về dịch vụ. |
+| *Thời gian* | Label – Date/Time | Ngày giờ du khách đăng tải đánh giá. |
+| *Trạng thái phản hồi* | Badge | Nhãn hiển thị: Màu xám (Chưa phản hồi), Màu xanh (Đã phản hồi). |
+| *Thao tác* | Icon Buttons | Biểu tượng Xem chi tiết / Trả lời bình luận của khách. |
+| Phân trang | Pagination | Các nút điều hướng chuyển đổi trang danh sách. |
+
+**Các chức năng màn hình:**
+
+| **Tên chức năng** | **Mô tả** | **Thành công** | **Thất bại** |
+| :--- | :--- | :--- | :--- |
+| **Lọc theo số sao/Trạng thái**| Phân loại nhanh các đánh giá tốt/xấu hoặc các đánh giá chưa được xử lý. | Hệ thống lọc và hiển thị chính xác các dòng dữ liệu tương ứng. | Hiển thị danh sách trống nếu không có bản ghi phù hợp. |
 
 | **Tên chức năng** | **Mô tả** | **Thành công** | **Thất bại** |
 | :--- | :--- | :--- | :--- |
