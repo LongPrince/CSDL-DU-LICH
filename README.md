@@ -292,4 +292,44 @@
 | **Tên chức năng** | **Mô tả** | **Thành công** | **Thất bại** |
 | :--- | :--- | :--- | :--- |
 | **Gửi hồ sơ khai báo** | Đóng gói toàn bộ thông tin kê khai gửi lên hệ thống. | Hệ thống lưu hồ sơ ở trạng thái "Chưa duyệt" và đẩy sang giao diện quản trị của Admin. | Nhập thiếu các trường bắt buộc (MST, Tên, Giấy phép), hệ thống báo đỏ tại trường thiếu dữ liệu. |
+### 3.3.3. Danh mục Loại hình lưu trú
+
+| **Tên Use case** | **Quản lý danh mục Loại hình lưu trú** |
+| :--- | :--- |
+| **Mô tả** | Quản trị viên hệ thống thực hiện tra cứu, xem danh sách và quản lý các loại hình phân loại dành cho cơ sở lưu trú (Khách sạn, Homestay, Resort, Villa...) để làm cơ sở dữ liệu định danh cho hệ thống. |
+| **Tác nhân** | Quản trị viên hệ thống (Admin) |
+| **Độ phức tạp** | ☑️ Đơn giản  🔲 Trung bình  🔲 Phức tạp |
+| **Điều kiện bắt đầu** | Người dùng đăng nhập bằng tài khoản Quản trị viên và truy cập menu "Quản lý danh mục" &rarr; "Loại hình lưu trú". |
+| **Điều kiện kết thúc** | Thông tin danh mục loại hình lưu trú được hiển thị đầy đủ, chính xác theo danh sách trên hệ thống. |
+
+---
+
+#### a. Danh sách Loại hình lưu trú
+
+<p align="center"><i>Hình 3.19: Giao diện Danh sách Loại hình lưu trú</i></p>
+
+| **Màn hình** | **Danh sách Loại hình lưu trú** |
+| :--- | :--- |
+| **Mô tả** | Màn hình hiển thị danh sách tập trung toàn bộ các nhóm phân loại cơ sở lưu trú du lịch đang được áp dụng trên Cổng thông tin. |
+| **Màn hình kết nối** | (Không có biểu mẫu Thêm/Sửa chi tiết theo bản thiết kế giao diện) |
+
+**Nội dung màn hình:**
+
+| **Item** | **Kiểu dữ liệu** | **Mô tả** |
+| :--- | :--- | :--- |
+| Nút Thêm Mới | Button | Nút chức năng khởi tạo thêm loại hình lưu trú mới. |
+| Bảng loại hình lưu trú | Table | Khung hiển thị danh sách các loại hình lưu trú du lịch. |
+| *STT* | Label – Number | Số thứ tự dòng hiển thị. |
+| *Mã loại* | Label – String | Mã định danh duy nhất của loại hình (VD: 64e3c812, 23e4c334). |
+| *Tên loại* | Label – String | Tên gọi chuẩn hóa của loại hình kinh doanh lưu trú (VD: Khách sạn, Homestay, Resort, Villa). |
+| *Thao tác* | Icon Buttons | Biểu tượng Sửa (Hình bút) hoặc Xóa (Hình thùng rác) bản ghi. |
+| Tổng số loại hình | Card – Number | Khối hiển thị tổng số lượng phân loại lưu trú hiện có trên hệ thống (VD: 5). |
+| Tổng số cơ sở lưu trú | Card – Number | Khối hiển thị tổng số lượng cơ sở lưu trú thực tế đang hoạt động thuộc tất cả các loại hình (VD: 23). |
+| Thanh phân trang | Pagination | Các nút điều hướng chuyển trang dữ liệu (1, 2, 3...) và dòng thông báo số lượng bản ghi. |
+
+**Các chức năng màn hình:**
+
+| **Tên chức năng** | **Mô tả** | **Thành công** | **Thất bại** |
+| :--- | :--- | :--- | :--- |
+| **Điều hướng danh sách** | Xem các danh sách phân loại qua tính năng phân trang. | Bảng dữ liệu tự động tải danh sách mới theo trang. | (Không có dữ liệu, bảng trống) |
 
