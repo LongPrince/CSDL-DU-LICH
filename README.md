@@ -505,3 +505,46 @@
 | **Tên chức năng** | **Mô tả** | **Thành công** | **Thất bại** |
 | :--- | :--- | :--- | :--- |
 | **Tìm kiếm & Lọc** | Tra cứu sự kiện theo tên, phân loại, trạng thái và thời gian. | Bảng dữ liệu tự động tải lại và hiển thị đúng danh sách kết quả phù hợp với các tiêu chí. | Hiển thị bảng trống kèm thông báo không có dữ liệu phù hợp. |
+### 3.10. Tìm kiếm thông tin du lịch
+
+| **Tên Use case** | **Tìm kiếm thông tin du lịch (Dịch vụ)** |
+| :--- | :--- |
+| **Mô tả** | Du khách thực hiện tìm kiếm, lọc và xem danh sách các dịch vụ du lịch, điểm đến nổi bật (Khách sạn, mua sắm, lưu trú, phương tiện...) trên ứng dụng di động. |
+| **Tác nhân** | Du khách (Người dùng cuối) |
+| **Độ phức tạp** | 🔲 Đơn giản  ☑️ Trung bình  🔲 Phức tạp |
+| **Điều kiện bắt đầu** | Người dùng mở ứng dụng và truy cập vào màn hình "Dịch vụ". |
+| **Điều kiện kết thúc** | Xem được danh sách các dịch vụ, điểm đến phù hợp với tiêu chí tìm kiếm. |
+| **Kịch bản chính** | 1. Chọn tab "Dịch vụ" trên ứng dụng.<br>2. Hệ thống hiển thị danh sách các dịch vụ và điểm đến gợi ý.<br>3. Người dùng nhập từ khóa tìm kiếm, hoặc chọn các danh mục (Khách sạn, Mua sắm...), hoặc dùng bộ lọc để tra cứu.<br>4. Hệ thống trả về kết quả danh sách các thẻ thông tin tương ứng. |
+| **Kịch bản phụ** | - *Không tìm thấy kết quả:* Nếu từ khóa hoặc bộ lọc không khớp với bất kỳ dịch vụ nào, hệ thống thông báo không có dữ liệu. |
+| **Các yêu cầu, ràng buộc** | Hệ thống cần yêu cầu quyền truy cập vị trí (GPS) từ thiết bị để tính toán và hiển thị khoảng cách từ người dùng đến điểm cung cấp dịch vụ. |
+
+---
+
+#### a. Màn hình Tìm kiếm thông tin du lịch (Dịch vụ)
+
+| **Màn hình** | **Tìm kiếm Dịch vụ / Điểm đến** |
+| :--- | :--- |
+| **Mô tả** | Giao diện dành riêng cho ứng dụng du khách. Trình bày dưới dạng các thẻ (card) trực quan, kết hợp thanh điều hướng nhanh và các danh mục dịch vụ vuốt ngang. |
+| **Màn hình kết nối** | (Không có) |
+
+**Nội dung màn hình:**
+
+| **Item** | **Kiểu dữ liệu** | **Mô tả** |
+| :--- | :--- | :--- |
+| Tiêu đề | Text | Hiển thị chữ "Dịch vụ" ở trên cùng. |
+| Ô tìm kiếm | Textfield – String | Nhập từ khóa để tìm kiếm nhanh điểm đến, dịch vụ. Kèm icon kính lúp. |
+| Thanh danh mục | Scrollable Tabs | Thanh cuộn ngang chứa các phân loại: Khách sạn, Mua sắm, Lưu trú, Phương tiện... |
+| Nút Lọc | Button | Click để mở bộ lọc nâng cao (icon cạnh thanh danh mục). |
+| Danh sách kết quả | List / Grid | Hiển thị danh sách các dịch vụ dạng thẻ (card). |
+| *Hình ảnh* | Image | Ảnh minh họa/ảnh đại diện của dịch vụ hoặc điểm đến. |
+| *Tên dịch vụ* | Text | Tên gọi của dịch vụ/điểm đến (VD: Lăng Tự Đức, Cố đô Huế). |
+| *Phân loại* | Badge | Nhãn danh mục hiển thị trên ảnh (VD: Du lịch văn hóa, Di sản). |
+| *Vị trí* | Text | Tên Tỉnh/Thành phố hoặc khu vực (VD: Huế). |
+| *Khoảng cách* | Text | Khoảng cách ước tính từ vị trí người dùng (VD: 2.5 km). |
+| Thanh điều hướng dưới | Bottom Navigation | Chứa các icon điều hướng chính của app: Trang chủ, Bản đồ, Quét QR (nút trung tâm nổi bật), Thông báo, Tài khoản cá nhân. |
+
+**Các chức năng màn hình:**
+
+| **Tên chức năng** | **Mô tả** | **Thành công** | **Thất bại** |
+| :--- | :--- | :--- | :--- |
+| **Tìm kiếm và Lọc** | Lọc và tra cứu dịch vụ theo từ khóa, danh mục, hoặc khoảng cách. | Bảng danh sách tự động làm mới và hiển thị các thẻ dịch vụ tương ứng. | Không có dữ liệu, hiển thị màn hình trống. |
