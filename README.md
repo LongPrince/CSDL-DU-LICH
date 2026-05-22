@@ -150,3 +150,123 @@
 | :--- | :--- | :--- | :--- |
 | Xác nhận Xóa dữ liệu | Người dùng nhấn chọn nút "Xác nhận Xóa" trên popup. | Hệ thống kiểm tra ràng buộc logic dữ liệu thành công $\rightarrow$ Thực hiện xóa vĩnh viễn cơ sở lưu trú khỏi hệ thống $\rightarrow$ Đóng popup $\rightarrow$ Hiển thị thông báo "Xóa thành công" $\rightarrow$ Làm mới (refresh) lại bảng danh sách dữ liệu. | Thất bại do dữ liệu bị ràng buộc chặt chẽ với các bảng khác (ví dụ: cơ sở lưu trú này đang có liên kết hóa đơn du lịch, hoặc danh sách phòng đang vận hành không thể xóa) $\rightarrow$ Hệ thống từ chối xóa, giữ nguyên popup và hiển thị thông báo lỗi logic dữ liệu. |
 | Hủy bỏ thao tác xóa | Người dùng nhấn nút "Hủy bỏ" hoặc click ra vùng ngoài hộp thoại. | Hệ thống đóng hộp thoại popup lại ngay lập tức, thông tin cơ sở lưu trú và bảng danh sách được giữ nguyên không có bất kỳ thay đổi nào. | Hộp thoại popup bị đơ, không đóng được. |
+
+### 3.5. Quản lý lữ hành và HDV
+
+| **Tên Use case** | **Quản lý lữ hành và Hướng dẫn viên (HDV)** |
+| :--- | :--- |
+| **Mô tả** | Chuyên viên quản lý nghiệp vụ/Quản trị viên thực hiện xem danh sách, thêm, sửa, xóa, cấp phép hoặc tạm khóa hoạt động đối với các Doanh nghiệp kinh doanh lữ hành và Hướng dẫn viên du lịch (Quốc tế/Nội địa) trên địa bàn. |
+| **Tác nhân** | Chuyên viên quản lý, Quản trị hệ thống |
+| **Độ phức tạp** | 🔲 Đơn giản  🔲 Trung bình  ☑️ Phức tạp |
+| **Điều kiện bắt đầu** | Người dùng đã đăng nhập thành công và có quyền truy cập vào module quản lý Lữ hành & HDV. |
+| **Điều kiện kết thúc** | Thông tin của doanh nghiệp lữ hành hoặc hướng dẫn viên được tạo mới, cập nhật hoặc xóa/khóa thành công trong hệ thống. |
+| **Kịch bản chính** | 1. Chọn menu "Quản lý nghiệp vụ" $\rightarrow$ Chọn tab "Doanh nghiệp lữ hành" hoặc "Hướng dẫn viên".<br>2. Hệ thống hiển thị danh sách tương ứng kèm bộ lọc tìm kiếm.<br>3. **Thêm mới**: Click "Thêm mới" $\rightarrow$ Điền thông tin (MST, Giấy phép lữ hành, Số thẻ HDV, Ngôn ngữ...) $\rightarrow$ Nhấn "Lưu".<br>4. **Chỉnh sửa**: Click icon Sửa $\rightarrow$ Cập nhật thông tin/Gia hạn thẻ/Gia hạn giấy phép $\rightarrow$ Nhấn "Lưu".<br>5. **Xóa/Khóa**: Click icon Xóa/Khóa $\rightarrow$ Xác nhận trên popup $\rightarrow$ Hệ thống cập nhật trạng thái hoạt động. |
+| **Kịch bản phụ** | - *Trùng lặp dữ liệu:* Nhập trùng Mã số thuế doanh nghiệp hoặc Số thẻ Hướng dẫn viên $\rightarrow$ Hệ thống báo lỗi và từ chối lưu.<br>- *Thẻ HDV hoặc Giấy phép hết hạn:* Hệ thống tự động bôi đỏ cảnh báo đối với các HDV có thẻ đã quá hạn sử dụng. |
+| **Các yêu cầu, ràng buộc** | Mã số thuế và Số thẻ HDV là định danh duy nhất (Unique). Ngày cấp thẻ/giấy phép phải nhỏ hơn Ngày hết hạn. |
+
+---
+
+#### a. Quản lý danh sách Doanh nghiệp Lữ hành
+
+| **Màn hình** | **Danh sách doanh nghiệp lữ hành** |
+| :--- | :--- |
+| **Mô tả** | Giao diện quản lý toàn bộ các công ty, đại lý du lịch lữ hành. Cho phép lọc theo loại hình kinh doanh (nội địa/quốc tế) và tình trạng giấy phép. |
+| **Màn hình kết nối** | Thêm mới / Chỉnh sửa / Xóa Doanh nghiệp lữ hành |
+
+**Nội dung màn hình:**
+
+| **Item** | **Kiểu dữ liệu** | **Mô tả** |
+| :--- | :--- | :--- |
+| Ô tìm kiếm | Textfield – String | Nhập tên doanh nghiệp hoặc Mã số thuế để tìm kiếm nhanh. |
+| Loại hình | Combobox – String | Lọc theo: Lữ hành Quốc tế, Lữ hành Nội địa. |
+| Trạng thái | Combobox – String | Lọc theo trạng thái: Đang hoạt động, Tạm dừng, Đã thu hồi giấy phép. |
+| Thêm doanh nghiệp | Button | Chuyển sang form đăng ký doanh nghiệp mới. |
+| Bảng dữ liệu | Table | Bảng danh sách doanh nghiệp lữ hành. |
+| *Mã số thuế* | Label – String | Mã số thuế (Đóng vai trò ID hiển thị). |
+| *Tên doanh nghiệp* | Link | Tên công ty lữ hành, click để xem chi tiết. |
+| *Số giấy phép* | Label – String | Số giấy phép kinh doanh lữ hành. |
+| *Loại hình* | Label – String | Quốc tế / Nội địa. |
+| *Người đại diện* | Label – String | Tên người đại diện pháp luật. |
+| *Trạng thái* | Badge | Trạng thái hoạt động (Xanh: Hoạt động, Đỏ: Thu hồi). |
+| *Thao tác* | Icon Buttons | Biểu tượng Sửa (Bút), Xóa (Thùng rác). |
+| Phân trang | Pagination | Chuyển đổi giữa các trang dữ liệu. |
+
+---
+
+#### b. Form Thêm/Sửa Doanh nghiệp Lữ hành
+
+| **Màn hình** | **Thêm mới / Chỉnh sửa Doanh nghiệp Lữ hành** |
+| :--- | :--- |
+| **Mô tả** | Biểu mẫu nhập liệu để đăng ký mới hoặc cập nhật thông tin giấy phép của một công ty lữ hành. |
+| **Màn hình kết nối** | Danh sách doanh nghiệp lữ hành |
+
+**Nội dung màn hình:**
+
+| **Item** | **Kiểu dữ liệu** | **Mô tả** |
+| :--- | :--- | :--- |
+| Tên doanh nghiệp | Textfield – String | Nhập tên đầy đủ của doanh nghiệp (Bắt buộc). |
+| Mã số thuế | Textfield – String | Nhập MST doanh nghiệp (Bắt buộc, không cho sửa nếu ở chế độ Edit). |
+| Số giấy phép | Textfield – String | Số giấy phép lữ hành (Bắt buộc). |
+| Loại hình kinh doanh | Radio Button | Chọn "Nội địa" hoặc "Quốc tế". |
+| Người đại diện | Textfield – String | Tên người đại diện pháp luật. |
+| Ngày cấp / Ngày hết hạn | Datepicker | Nhập thời hạn của giấy phép. |
+| SĐT / Email | Textfield – String | Thông tin liên hệ công ty. |
+| Địa chỉ | Textfield – String | Trụ sở chính của doanh nghiệp. |
+| Nút Lưu / Hủy | Button | Lưu dữ liệu vào CSDL hoặc Hủy thao tác. |
+
+---
+
+#### c. Quản lý danh sách Hướng dẫn viên (HDV)
+
+| **Màn hình** | **Danh sách Hướng dẫn viên** |
+| :--- | :--- |
+| **Mô tả** | Quản lý danh sách thẻ hướng dẫn viên du lịch. Theo dõi sát sao trình độ ngoại ngữ và thời hạn sử dụng thẻ của từng HDV. |
+| **Màn hình kết nối** | Thêm mới / Chỉnh sửa hồ sơ HDV / Khóa thẻ |
+
+**Nội dung màn hình:**
+
+| **Item** | **Kiểu dữ liệu** | **Mô tả** |
+| :--- | :--- | :--- |
+| Ô tìm kiếm | Textfield – String | Nhập Tên HDV hoặc Số thẻ HDV. |
+| Loại thẻ | Combobox – String | Lọc: Thẻ Quốc tế, Thẻ Nội địa, Thẻ Tại điểm. |
+| Ngôn ngữ | Combobox – String | Lọc theo ngoại ngữ: Tiếng Anh, Pháp, Trung, Nhật... |
+| Tình trạng thẻ | Combobox – String | Lọc: Còn hạn, Hết hạn, Bị khóa thẻ. |
+| Thêm HDV | Button | Nút mở form tạo hồ sơ cấp thẻ mới. |
+| Bảng dữ liệu HDV | Table | Hiển thị danh sách HDV. |
+| *Số thẻ HDV* | Label – String | Số hiệu thẻ hướng dẫn viên. |
+| *Họ và tên* | Link | Tên HDV (Kèm avatar nhỏ bên cạnh). |
+| *Loại thẻ* | Label – String | Hiển thị phân loại thẻ. |
+| *Ngôn ngữ* | Label – String | Các ngoại ngữ được cấp phép hướng dẫn. |
+| *Hạn thẻ* | Label – Date | Ngày hết hạn của thẻ HDV. |
+| *Trạng thái* | Badge | Trạng thái (Xanh: Hợp lệ, Đỏ: Hết hạn, Xám: Khóa). |
+
+---
+
+#### d. Form Thêm/Sửa hồ sơ Hướng dẫn viên
+
+| **Màn hình** | **Thêm mới / Chỉnh sửa hồ sơ Hướng dẫn viên** |
+| :--- | :--- |
+| **Mô tả** | Biểu mẫu nhập thông tin nhân thân, trình độ ngôn ngữ và thông tin thẻ ngành của hướng dẫn viên. |
+| **Màn hình kết nối** | Danh sách Hướng dẫn viên |
+
+**Nội dung màn hình:**
+
+| **Item** | **Kiểu dữ liệu** | **Mô tả** |
+| :--- | :--- | :--- |
+| Số thẻ HDV | Textfield – String | Nhập mã số thẻ HDV (Bắt buộc, Unique). |
+| Họ và tên | Textfield – String | Tên đầy đủ của HDV (Bắt buộc). |
+| Số CCCD / CMND | Textfield – String | Số định danh cá nhân. |
+| Giới tính / Ngày sinh | Radio / Datepicker | Chọn giới tính và ngày tháng năm sinh. |
+| Phân loại thẻ | Dropdown | Chọn: Thẻ Nội địa, Quốc tế, Tại điểm. |
+| Ngôn ngữ thành thạo | Multi-select / Checkbox| Chọn nhiều ngôn ngữ HDV có thể sử dụng (Anh, Trung, Pháp...). |
+| Ngày cấp / Hết hạn | Datepicker | Thời hạn hiệu lực của thẻ hành nghề. |
+| Ảnh thẻ 3x4 | File Upload | Tải lên ảnh chân dung của HDV. |
+| Trạng thái | Dropdown | Đang hoạt động, Tạm khóa thẻ. |
+| Nút Lưu / Hủy | Button | Lưu hồ sơ HDV hoặc hủy thao tác quay về danh sách. |
+
+**Các chức năng màn hình dùng chung (Form Thêm/Sửa cả Lữ hành & HDV):**
+
+| **Tên chức năng** | **Mô tả** | **Thành công** | **Thất bại** |
+| :--- | :--- | :--- | :--- |
+| **Lưu dữ liệu** | Click nút "Lưu" để lưu vào hệ thống | Dữ liệu hợp lệ $\rightarrow$ Hệ thống báo thành công, lưu CSDL và chuyển về trang danh sách. | Để trống trường bắt buộc, sai format email, hoặc trùng MST/Số thẻ HDV $\rightarrow$ Báo lỗi đỏ. |
+| **Hủy bỏ** | Click nút "Hủy" | Hệ thống đóng form, không lưu dữ liệu. | |
