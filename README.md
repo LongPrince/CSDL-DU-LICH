@@ -153,278 +153,144 @@
 
 ### 3.3.2. Doanh nghiệp
 
-| **Tên Use case** | **Quản lý danh mục và tài khoản Doanh nghiệp** |
+| **Tên Use case** | **Quản lý danh mục và thông tin Doanh nghiệp** |
 | :--- | :--- |
-| **Mô tả** | Quản trị viên (QTV) thực hiện cấu hình phân loại doanh nghiệp, phê duyệt thông tin đăng ký hoạt động của các cơ sở kinh doanh, và quản lý việc thêm mới dữ liệu doanh nghiệp du lịch trên hệ thống. |
-| **Tác nhân** | Quản trị viên hệ thống (Admin), Doanh nghiệp (đối với luồng khai báo thông tin) |
-| **Độ phức tạp** | 🔲 Đơn giản  ☑️ Trung bình  🔲 Phức tạp |
-| **Điều kiện bắt đầu** | Người dùng đăng nhập thành công với vai trò có quyền quản lý module Doanh nghiệp. |
-| **Điều kiện kết thúc** | Danh mục loại doanh nghiệp được cập nhật hoặc trạng thái hoạt động/phê duyệt của doanh nghiệp được lưu thành công. |
+| **Mô tả** | Cung cấp công cụ quản lý toàn diện vòng đời của một doanh nghiệp du lịch trên hệ thống: từ việc cấu hình danh mục phân loại (Loại hình), tiếp nhận thông tin tự kê khai của doanh nghiệp (Khai báo), xử lý thẩm định cấp quyền (Duyệt), cho đến việc theo dõi danh sách tập trung (Hồ sơ). |
+| **Tác nhân** | Quản trị viên hệ thống (Admin/QTV), Người dùng Doanh nghiệp |
+| **Độ phức tạp** | ☑️ Đơn giản  🔲 Trung bình  🔲 Phức tạp |
+| **Điều kiện bắt đầu** | - Đối với Admin: Đăng nhập thành công và chọn phân hệ "Quản lý danh mục" &rarr; "Doanh nghiệp".<br>- Đối với Doanh nghiệp: Đăng nhập tài khoản doanh nghiệp lần đầu hoặc truy cập phân hệ cập nhật thông tin đơn vị. |
+| **Điều kiện kết thúc** | Thông tin doanh nghiệp được chuẩn hóa, phê duyệt hợp lệ và lưu trữ đồng bộ vào Cơ sở dữ liệu du lịch thành phố. |
 
 ---
 
-#### 3.3.2.1. Loại doanh nghiệp
+#### a. Loại hình doanh nghiệp
 
-##### a. Danh sách loại doanh nghiệp
-<p align="center"><i>Hình 3.17: Giao diện Danh sách Loại doanh nghiệp</i></p>
+<p align="center"><i>Hình 3.12: Giao diện Danh sách Loại hình doanh nghiệp du lịch</i></p>
 
-| **Màn hình** | **Danh sách Loại doanh nghiệp** |
+| **Màn hình** | **Danh sách Loại hình doanh nghiệp du lịch** |
 | :--- | :--- |
-| **Mô tả** | Màn hình hiển thị danh mục các loại hình kinh doanh của doanh nghiệp (VD: Lữ hành, Lưu trú, Ăn uống, Vận chuyển, Mua sắm). |
-| **Màn hình kết nối** | Form Thêm mới Loại doanh nghiệp |
+| **Mô tả** | Giao diện quản trị dành cho Admin để theo dõi và định cấu hình các nhóm ngành nghề kinh doanh du lịch chính (Lưu trú, Lữ hành, Dịch vụ...). |
+| **Màn hình kết nối** | Hồ sơ doanh nghiệp |
 
 **Nội dung màn hình:**
 
 | **Item** | **Kiểu dữ liệu** | **Mô tả** |
 | :--- | :--- | :--- |
-| Tìm kiếm | Textfield – String | Tìm kiếm loại doanh nghiệp theo tên hoặc mã. |
-| Thêm loại DN | Button | Nút mở form tạo mới loại doanh nghiệp. |
-| Bảng danh sách | Table | Hiển thị danh mục các loại doanh nghiệp hiện có. |
-| *Mã loại DN* | Label – String | Mã định danh phân loại (VD: LMD, DVLT). |
-| *Tên loại DN* | Label – String | Tên phân loại (VD: Dịch vụ lưu trú, Nhà hàng). |
-| *Trạng thái* | Badge | Đang áp dụng / Ngừng áp dụng. |
-| *Thao tác* | Icon Buttons | Biểu tượng chỉnh sửa hoặc xóa loại hình. |
+| Bộ lọc Loại hình | Combobox | Cho phép chọn phân loại cụ thể để lọc nhanh danh sách dữ liệu (Mặc định: Tất cả loại hình). |
+| Nút Thêm Mới | Button | Nút bấm để kích hoạt luồng thêm mới phân loại doanh nghiệp. |
+| Bảng loại hình | Table | Khung hiển thị danh sách dạng bảng các loại hình doanh nghiệp. |
+| *STT* | Label – Number | Số thứ tự dòng. |
+| *Mã loại* | Label – String | Mã băm định danh hệ thống tự sinh (VD: 23e4c334, 64e3c812). |
+| *Tên loại* | Label – String | Tên gọi phân loại doanh nghiệp (VD: Lưu trú, Lữ hành, Dịch vụ). |
+| *Thao tác* | Icon Buttons | Các biểu tượng Xem, Sửa, Xóa bản ghi danh mục. |
+| Tổng số loại hình | Card – Number | Khối thống kê tổng số lượng loại hình kinh doanh đang áp dụng (VD: 3). |
+| Tổng số doanh nghiệp | Card – Number | Khối thống kê tổng số doanh nghiệp thuộc mọi loại hình (VD: 23). |
+| Thanh phân trang | Pagination | Các nút điều hướng trang (1, 2, 3...) kèm dòng thông tin số lượng (VD: "Hiển thị 1 - 4 của 36 đơn vị"). |
 
 **Các chức năng màn hình:**
 
 | **Tên chức năng** | **Mô tả** | **Thành công** | **Thất bại** |
 | :--- | :--- | :--- | :--- |
-| **Tìm kiếm** | Lọc dữ liệu theo từ khóa nhập vào. | Cập nhật bảng hiển thị đúng kết quả. | Không tìm thấy, bảng trống. |
+| **Lọc loại hình** | Lọc nhanh các bản ghi theo nhóm ngành nghề được chọn từ Combobox. | Bảng dữ liệu cập nhật và chỉ hiển thị các dòng tương thích. | Không tìm thấy kết quả, bảng trả về trạng thái trống. |
 
 ---
 
-##### b. Form Thêm mới loại doanh nghiệp
-<p align="center"><i>Hình 3.18: Form Thêm mới Loại doanh nghiệp</i></p>
+#### b. Hồ sơ doanh nghiệp
 
-| **Màn hình** | **Thêm mới Loại doanh nghiệp** |
+<p align="center"><i>Hình 3.13: Giao diện Danh sách Hồ sơ doanh nghiệp</i></p>
+
+| **Màn hình** | **Danh sách Hồ sơ doanh nghiệp** |
 | :--- | :--- |
-| **Mô tả** | Biểu mẫu nhập thông tin phân loại doanh nghiệp mới. |
-| **Màn hình kết nối** | Danh sách loại doanh nghiệp |
+| **Mô tả** | Màn hình quản lý tổng thể thông tin, địa chỉ và trạng thái xét duyệt của toàn bộ các doanh nghiệp du lịch trên địa bàn thành phố Huế. |
+| **Màn hình kết nối** | Loại hình doanh nghiệp, Phê duyệt thông tin doanh nghiệp |
 
 **Nội dung màn hình:**
 
 | **Item** | **Kiểu dữ liệu** | **Mô tả** |
 | :--- | :--- | :--- |
-| Mã loại DN | Textfield – String | Nhập mã viết tắt không trùng lặp (Bắt buộc). |
-| Tên loại DN | Textfield – String | Nhập tên loại hình doanh nghiệp (Bắt buộc). |
-| Mô tả ngắn | Textarea | Nhập ghi chú hoặc mô tả đặc điểm loại hình. |
-| Nút Lưu | Button | Xác nhận gửi dữ liệu lên hệ thống. |
-| Nút Hủy | Button | Thoát biểu mẫu, quay lại danh sách. |
+| Tìm kiếm nhanh | Textfield – String | Ô nhập từ khóa tìm kiếm doanh nghiệp theo Tên hoặc Mã số doanh nghiệp. |
+| Bộ lọc Loại hình | Combobox | Lọc danh sách doanh nghiệp theo mảng hoạt động (Tất cả, Lưu trú, Lữ hành...). |
+| Nút Thêm Mới | Button | Nút bấm hỗ trợ Admin tạo nhanh một hồ sơ doanh nghiệp mới từ phía quản trị. |
+| Bảng hồ sơ doanh nghiệp | Table | Bảng dữ liệu hiển thị thông tin tổng quan của các doanh nghiệp. |
+| *STT* | Label – Number | Số thứ tự dòng. |
+| *Mã DN* | Label – String | Mã số doanh nghiệp hoặc Mã số thuế của đơn vị (VD: 268935677). |
+| *Tên DN* | Label – String | Tên thương mại hoặc tên pháp nhân chính thức (VD: Imperial Huế, Vietravel Huế). |
+| *Địa chỉ* | Label – String | Trụ sở hoạt động chính (VD: 54 Hùng Vương, 13 Lê Lợi). |
+| *Loại hình* | Label – String | Nhóm loại hình doanh nghiệp tương ứng (VD: Lưu trú, Lữ hành, Dịch vụ). |
+| *Trạng Thái* | Badge | Nhãn màu thể hiện tiến trình hồ sơ: Đã duyệt (Xanh), Từ chối (Đỏ), Chưa duyệt (Vàng). |
+| *Thao tác* | Icon Buttons | Biểu tượng Xem chi tiết, Phê duyệt nhanh hoặc Xóa hồ sơ. |
+| Tổng số loại hình | Card – Number | Khối thống kê tổng số lượng loại hình kinh doanh (VD: 3). |
+| Tổng số doanh nghiệp | Card – Number | Khối thống kê tổng số doanh nghiệp trên toàn hệ thống (VD: 23). |
+| Điều hướng trang | Pagination | Bộ nút phân trang danh sách dữ liệu. |
 
 **Các chức năng màn hình:**
 
 | **Tên chức năng** | **Mô tả** | **Thành công** | **Thất bại** |
 | :--- | :--- | :--- | :--- |
-| **Lưu thông tin** | Thực hiện đẩy dữ liệu lưu vào CSDL. | Gọi popup thêm thành công. | Điền thiếu thông tin, giữ nguyên form, báo đỏ. |
+| **Tra cứu & Lọc hồ sơ** | Tìm kiếm theo từ khóa kết hợp lọc mảng kinh doanh của doanh nghiệp. | Hệ thống lọc và hiển thị danh sách hồ sơ trùng khớp với điều kiện. | Không tìm thấy bản ghi, bảng hiển thị thông báo trống. |
 
 ---
 
-##### c. Popup Thêm loại doanh nghiệp thành công
-<p align="center"><i>Hình 3.19: Popup Thông báo Thêm loại doanh nghiệp thành công</i></p>
+#### c. Duyệt doanh nghiệp
 
-| **Màn hình** | **Thông báo Thêm thành công (Popup)** |
+<p align="center"><i>Hình 3.14: Giao diện Phê duyệt thông tin doanh nghiệp</i></p>
+
+| **Màn hình** | **Phê duyệt thông tin doanh nghiệp** |
 | :--- | :--- |
-| **Mô tả** | Hộp thoại thông báo khi cấu hình loại doanh nghiệp mới thành công. |
-| **Màn hình kết nối** | Danh sách loại doanh nghiệp |
+| **Mô tả** | Màn hình dành riêng cho vai trò Quản trị viên (QTV) kiểm tra tính hợp pháp của các thông tin, giấy phép do doanh nghiệp tự khai báo và tiến hành ra quyết định phê duyệt. |
+| **Màn hình kết nối** | Hồ sơ doanh nghiệp |
 
 **Nội dung màn hình:**
 
 | **Item** | **Kiểu dữ liệu** | **Mô tả** |
 | :--- | :--- | :--- |
-| Biểu tượng | Icon | Icon dấu tích xanh thể hiện thành công. |
-| Thông điệp | Text (static) | "Thêm mới loại doanh nghiệp thành công!" |
-| Nút Xác nhận | Button | Đóng popup và chuyển hướng trang. |
+| Mã doanh nghiệp / MST | Label – String | Mã số thuế doanh nghiệp cần thẩm định. |
+| Tên doanh nghiệp | Label – String | Tên đơn vị đăng ký. |
+| Loại hình hoạt động | Label – String | Phân loại ngành nghề đăng ký. |
+| Giấy phép kinh doanh đính kèm | Link / File Icon | Liên kết mở/tải tệp văn bản pháp lý (PDF hoặc hình ảnh) để QTV đối chiếu. |
+| Ảnh minh họa cơ sở | Image Preview | Vùng hiển thị các hình ảnh trực quan về cơ sở vật chất do doanh nghiệp tải lên. |
+| Lý do từ chối | Textarea – String | Ô nhập lý do không phê duyệt (Bắt buộc điền nếu QTV chọn hành động Từ chối). |
+| Nút Phê duyệt | Button (Success) | Nút bấm đồng ý cấp quyền, chuyển trạng thái doanh nghiệp thành "Đã duyệt". |
+| Nút Từ chối | Button (Danger) | Nút bấm bác bỏ hồ sơ, chuyển trạng thái doanh nghiệp thành "Từ chối". |
+| Nút Quay lại | Button | Nút thoát giao diện thẩm định và trở về màn hình danh sách hồ sơ. |
 
 **Các chức năng màn hình:**
 
 | **Tên chức năng** | **Mô tả** | **Thành công** | **Thất bại** |
 | :--- | :--- | :--- | :--- |
-| **Xác nhận** | Đồng ý đóng thông báo. | Điều hướng quay lại giao diện danh sách loại doanh nghiệp. | (Không có) |
+| **Phê duyệt hồ sơ** | Kích hoạt khi thông tin hợp lệ. Admin bấm nút Phê duyệt. | Hệ thống lưu trạng thái "Đã duyệt", cấp quyền kinh doanh và gửi thông báo cho DN. | Lỗi kết nối CSDL, hồ sơ giữ nguyên trạng thái cũ. |
+| **Từ chối hồ sơ** | Kích hoạt khi thông tin sai lệch. Admin nhập lý do từ chối và bấm nút Từ chối. | Hệ thống lưu trạng thái "Từ chối", ghi nhận lý do và phản hồi về tài khoản DN. | Chưa nhập lý do từ chối, hệ thống cảnh báo yêu cầu bổ sung thông tin. |
 
 ---
 
-##### d. Popup Thêm loại doanh nghiệp thất bại
-<p align="center"><i>Hình 3.20: Popup Thông báo Thêm loại doanh nghiệp thất bại</i></p>
+#### d. Khai báo doanh nghiệp
 
-| **Màn hình** | **Thông báo Thêm thất bại (Popup)** |
+<p align="center"><i>Hình 3.15: Giao diện Khai báo thông tin doanh nghiệp</i></p>
+
+| **Màn hình** | **Khai báo thông tin doanh nghiệp** |
 | :--- | :--- |
-| **Mô tả** | Hộp thoại thông báo khi trùng mã loại doanh nghiệp hoặc thiếu dữ liệu. |
-| **Màn hình kết nối** | Form Thêm mới loại doanh nghiệp |
+| **Mô tả** | Màn hình chính dành cho tác nhân Doanh nghiệp tự kê khai thông tin năng lực, vị trí tọa độ và đính kèm hồ sơ pháp lý gửi lên ban quản trị (tương ứng với chức năng khởi tạo từ phía người dùng ngoài). |
+| **Màn hình kết nối** | (Không có) |
 
 **Nội dung màn hình:**
 
 | **Item** | **Kiểu dữ liệu** | **Mô tả** |
 | :--- | :--- | :--- |
-| Biểu tượng | Icon | Icon chấm than đỏ báo lỗi. |
-| Thông điệp | Text (dynamic) | "Mã loại doanh nghiệp đã tồn tại trong hệ thống." |
-| Nút Đóng | Button | Tắt thông báo lỗi. |
+| Nhập Mã doanh nghiệp / MST | Textfield – String | Trường bắt buộc nhập Mã số thuế để định danh doanh nghiệp. |
+| Nhập Tên doanh nghiệp | Textfield – String | Trường nhập tên thương hiệu / tên pháp nhân đầy đủ. |
+| Lựa chọn Loại hình | Combobox | Lựa chọn mảng hoạt động chính (Lưu trú, Lữ hành, Dịch vụ...). |
+| Số điện thoại liên hệ | Textfield – Number | Số hotline phục vụ giao dịch du lịch. |
+| Địa chỉ trụ sở | Textfield – String | Nhập số nhà, tên đường, chọn Phường/Xã thuộc Thành phố Huế. |
+| Tọa độ bản đồ | Map Picker / Text | Tọa độ GPS (Latitude, Longitude) xác định vị trí thực tế trên bản đồ số du lịch. |
+| Tải lên Giấy phép kinh doanh | Upload Button | Nút tải lên tệp hồ sơ pháp lý chứng minh năng lực hoạt động (Định dạng PDF/JPG). |
+| Giới thiệu / Mô tả ngắn | Textarea – String | Đoạn văn bản giới thiệu đặc điểm nổi bật hoặc lịch sử của doanh nghiệp. |
+| Nút Gửi phê duyệt | Button (Primary) | Nút thực hiện đóng gói dữ liệu và gửi hồ sơ sang hàng đợi xét duyệt của Admin. |
+| Nút Hủy bỏ | Button | Nút xóa sạch các trường thông tin vừa nhập và thiết lập lại từ đầu. |
 
 **Các chức năng màn hình:**
 
 | **Tên chức năng** | **Mô tả** | **Thành công** | **Thất bại** |
 | :--- | :--- | :--- | :--- |
-| **Đóng** | Tắt hộp thoại lỗi. | Popup đóng lại, giữ nguyên biểu mẫu đang điền để hiệu chỉnh. | (Không có) |
+| **Gửi hồ sơ khai báo** | Đóng gói toàn bộ thông tin kê khai gửi lên hệ thống. | Hệ thống lưu hồ sơ ở trạng thái "Chưa duyệt" và đẩy sang giao diện quản trị của Admin. | Nhập thiếu các trường bắt buộc (MST, Tên, Giấy phép), hệ thống báo đỏ tại trường thiếu dữ liệu. |
 
----
 
-#### 3.3.2.2. Duyệt doanh nghiệp
-
-##### a. Giao diện Danh sách chờ duyệt
-<p align="center"><i>Hình 3.21: Giao diện Danh sách doanh nghiệp chờ phê duyệt</i></p>
-
-| **Màn hình** | **Danh sách Phê duyệt Thông tin Doanh nghiệp** |
-| :--- | :--- |
-| **Mô tả** | Giao diện dành cho QTV theo dõi các hồ sơ doanh nghiệp tự khai báo thông tin trên cổng du lịch đang ở trạng thái chờ duyệt. |
-| **Màn hình kết nối** | Màn hình Chi tiết và Phê duyệt |
-
-**Nội dung màn hình:**
-
-| **Item** | **Kiểu dữ liệu** | **Mô tả** |
-| :--- | :--- | :--- |
-| Bộ lọc trạng thái | Combobox | Lọc theo trạng thái: Chờ duyệt, Đã duyệt, Từ chối. |
-| Tìm tên DN | Textfield – String | Tìm tên cơ sở kinh doanh/doanh nghiệp. |
-| Bảng dữ liệu | Table | Danh sách hồ sơ doanh nghiệp. |
-| *Tên doanh nghiệp* | Link | Bấm vào để xem chi tiết hồ sơ duyệt. |
-| *Mã số thuế* | Label – String | Mã số thuế của cơ sở. |
-| *Ngày gửi yêu cầu*| Label – Date | Thời gian doanh nghiệp gửi thông tin lên hệ thống. |
-| *Trạng thái* | Badge | Nhãn màu vàng hiển thị chữ "Chờ duyệt". |
-| *Thao tác* | Icon Button | Biểu tượng kính lúp/bút để mở form Phê duyệt chi tiết. |
-
-**Các chức năng màn hình:**
-
-| **Tên chức năng** | **Mô tả** | **Thành công** | **Thất bại** |
-| :--- | :--- | :--- | :--- |
-| **Xem chi tiết hồ sơ**| Chuyển tiếp tới màn hình phê duyệt. | Hiển thị giao diện thông tin chi tiết của DN được chọn. | Lỗi tải trang, thông báo thử lại. |
-
----
-
-##### b. Màn hình Chi tiết và Phê duyệt doanh nghiệp
-<p align="center"><i>Hình 3.22: Màn hình Phê duyệt thông tin doanh nghiệp chi tiết</i></p>
-
-| **Màn hình** | **Phê duyệt thông tin doanh nghiệp chi tiết** |
-| :--- | :--- |
-| **Mô tả** | Giao diện hiển thị toàn bộ hồ sơ đăng ký của doanh nghiệp kèm các nút ra quyết định Phê duyệt hoặc Từ chối. |
-| **Màn hình kết nối** | Danh sách doanh nghiệp chờ duyệt |
-
-**Nội dung màn hình:**
-
-| **Item** | **Kiểu dữ liệu** | **Mô tả** |
-| :--- | :--- | :--- |
-| Khối thông tin chung | View fields | Hiển thị thông tin: Tên DN, Mã số thuế, Loại hình, Địa bàn, Địa chỉ, Số điện thoại, Email, Website. |
-| Giấy phép ĐKKD | Link / Image | Tệp đính kèm bản quét Giấy chứng nhận đăng ký kinh doanh. |
-| Ý kiến phê duyệt | Textarea | Nhập nội dung lý do (Bắt buộc nhập nếu nhấn Từ chối). |
-| Nút Phê duyệt | Button (Xanh) | Chấp thuận thông tin doanh nghiệp hợp lệ. |
-| Nút Từ chối | Button (Đỏ) | Từ chối chấp thuận hồ sơ đăng ký thông tin. |
-| Nút Quay lại | Button | Quay trở lại danh sách chờ duyệt. |
-
-**Các chức năng màn hình:**
-
-| **Tên chức năng** | **Mô tả** | **Thành công** | **Thất bại** |
-| :--- | :--- | :--- | :--- |
-| **Phê duyệt** | Chấp nhận hồ sơ của doanh nghiệp. | Kích hoạt tài khoản doanh nghiệp, chuyển sang popup thành công. | Lỗi hệ thống, không cập nhật được CSDL. |
-| **Từ chối** | Không duyệt hồ sơ thông tin. | Gửi thông báo từ chối về email DN (yêu cầu nhập ý kiến), mở popup từ chối. | Không điền "Ý kiến phê duyệt" $\rightarrow$ Báo lỗi bắt buộc nhập. |
-
----
-
-##### c. Popup Phê duyệt thành công
-<p align="center"><i>Hình 3.23: Popup Thông báo Phê duyệt doanh nghiệp thành công</i></p>
-
-| **Màn hình** | **Thông báo Phê duyệt thành công (Popup)** |
-| :--- | :--- |
-| **Mô tả** | Hộp thoại thông báo khi QTV bấm duyệt hồ sơ thành công. |
-| **Màn hình kết nối** | Danh sách doanh nghiệp chờ duyệt |
-
-**Nội dung màn hình:**
-
-| **Item** | **Kiểu dữ liệu** | **Mô tả** |
-| :--- | :--- | :--- |
-| Biểu tượng | Icon | Biểu tượng checkmark xanh lá. |
-| Nội dung | Text (static) | "Phê duyệt thông tin doanh nghiệp thành công!" |
-| Nút Đồng ý | Button | Đóng popup, tự động chuyển về trang danh sách chờ duyệt. |
-
-**Các chức năng màn hình:**
-
-| **Tên chức năng** | **Mô tả** | **Thành công** | **Thất bại** |
-| :--- | :--- | :--- | :--- |
-| **Đồng ý đóng** | Quay lại quản lý danh sách. | Popup đóng, trạng thái doanh nghiệp cập nhật thành "Đã duyệt" trên danh sách. | (Không có) |
-
----
-
-#### 3.3.2.3. Khai báo / thêm mới doanh nghiệp
-
-##### a. Giao diện Form Khai báo / Thêm mới doanh nghiệp
-<p align="center"><i>Hình 3.24: Giao diện Form Khai báo / Thêm mới doanh nghiệp</i></p>
-
-| **Màn hình** | **Khai báo / Thêm mới doanh nghiệp** |
-| :--- | :--- |
-| **Mô tả** | Biểu mẫu áp dụng cho Doanh nghiệp tự đăng ký thông tin (Khai báo) hoặc Quản trị viên nhập trực tiếp dữ liệu cơ sở kinh doanh mới trên phân hệ Admin. |
-| **Màn hình kết nối** | Trang chủ ứng dụng / Giao diện danh sách doanh nghiệp tổng thể |
-
-**Nội dung màn hình:**
-
-| **Item** | **Kiểu dữ liệu** | **Mô tả** |
-| :--- | :--- | :--- |
-| Tên doanh nghiệp | Textfield – String | Nhập tên chính thức theo giấy phép kinh doanh (Bắt buộc). |
-| Mã số thuế | Textfield – String | Nhập mã số thuế (Bắt buộc - Dùng làm thông tin đối chiếu trùng lặp). |
-| Loại hình doanh nghiệp| Combobox | Lựa chọn loại hình kinh doanh (Khách sạn, Lữ hành, Nhà hàng...). |
-| Địa bàn trực thuộc | Combobox | Chọn Tỉnh/Thành phố, Quận/Huyện quản lý trực tiếp. |
-| Địa chỉ chi tiết | Textfield – String | Nhập số nhà, tên đường, phường xã cụ thể. |
-| Điện thoại liên hệ | Textfield – String | Nhập số điện thoại liên lạc của cơ sở kinh doanh (Bắt buộc). |
-| Email | Textfield – String | Nhập địa chỉ thư điện tử để nhận thông báo từ hệ thống. |
-| Tải giấy phép ĐKKD | File Uploader | Đính kèm file ảnh hoặc file PDF giấy đăng ký kinh doanh. |
-| Nút Gửi hồ sơ / Lưu | Button | Thực hiện đẩy dữ liệu đăng ký/thêm mới vào hệ thống. |
-| Nút Hủy | Button | Thoát khỏi biểu mẫu khai báo dữ liệu. |
-
-**Các chức năng màn hình:**
-
-| **Tên chức năng** | **Mô tả** | **Thành công** | **Thất bại** |
-| :--- | :--- | :--- | :--- |
-| **Gửi hồ sơ / Lưu** | Lưu thông tin bản ghi đăng ký. | Đẩy dữ liệu vào trạng thái chờ duyệt (với DN khai báo) hoặc lưu thẳng (với QTV), mở popup thành công. | Để trống thông tin bắt buộc hoặc định dạng ảnh ĐKKD không hợp lệ $\rightarrow$ Báo lỗi tại trường. |
-
----
-
-##### b. Popup Đăng ký / Khai báo doanh nghiệp thành công
-<p align="center"><i>Hình 3.25: Popup Đăng ký / Khai báo doanh nghiệp thành công</i></p>
-
-| **Màn hình** | **Thông báo Đăng ký / Khai báo thành công (Popup)** |
-| :--- | :--- |
-| **Mô tả** | Hộp thoại thông báo dữ liệu doanh nghiệp đã được tiếp nhận thành công. |
-| **Màn hình kết nối** | Màn hình đăng nhập / Trang danh sách chính |
-
-**Nội dung màn hình:**
-
-| **Item** | **Kiểu dữ liệu** | **Mô tả** |
-| :--- | :--- | :--- |
-| Biểu tượng | Icon | Hình tròn dấu kiểm màu xanh lá. |
-| Thông điệp thông báo | Text (static) | "Khai báo thông tin doanh nghiệp thành công! Hồ sơ của bạn đang chờ phê duyệt từ Ban quản trị." |
-| Nút Hoàn tất | Button | Bấm để đóng biểu mẫu và kết thúc luồng xử lý. |
-
-**Các chức năng màn hình:**
-
-| **Tên chức năng** | **Mô tả** | **Thành công** | **Thất bại** |
-| :--- | :--- | :--- | :--- |
-| **Hoàn tất** | Đồng ý đóng thông báo. | Popup đóng lại, chuyển hướng người dùng về màn hình theo quy định. | (Không có) |
-
----
-
-##### c. Popup Đăng ký / Khai báo doanh nghiệp thất bại
-<p align="center"><i>Hình 3.26: Popup Đăng ký / Khai báo doanh nghiệp thất bại</i></p>
-
-| **Màn hình** | **Thông báo Đăng ký / Khai báo thất bại (Popup)** |
-| :--- | :--- |
-| **Mô tả** | Hộp thoại xuất hiện khi mã số thuế doanh nghiệp bị trùng lập với một cơ sở kinh doanh đã tồn tại. |
-| **Màn hình kết nối** | Giữ nguyên Form Khai báo / Thêm mới doanh nghiệp |
-
-**Nội dung màn hình:**
-
-| **Item** | **Kiểu dữ liệu** | **Mô tả** |
-| :--- | :--- | :--- |
-| Biểu tượng | Icon | Hình tròn chứa dấu X màu đỏ rực. |
-| Thông điệp lỗi | Text (dynamic) | "Đăng ký thất bại! Mã số thuế này đã được đăng ký trên hệ thống du lịch." |
-| Nút Quay lại chỉnh sửa| Button | Bấm để đóng popup lỗi và chỉnh sửa dữ liệu trên form. |
-
-**Các chức năng màn hình:**
-
-| **Tên chức năng** | **Mô tả** | **Thành công** | **Thất bại** |
-| :--- | :--- | :--- | :--- |
-| **Quay lại chỉnh sửa**| Đóng popup lỗi. | Tắt thông báo, giữ nguyên toàn bộ các thông tin doanh nghiệp vừa điền để chỉnh sửa mã số thuế. | (Không có) |
