@@ -1,4 +1,3 @@
-# TÀI LIỆU TỔNG HỢP
 
 ### 3.1 Đăng nhập
 
