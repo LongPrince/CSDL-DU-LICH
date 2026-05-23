@@ -15,8 +15,8 @@
 
 **Form đăng nhập:**
 
-![Hình 3.1: Form đăng nhập hệ thống](09_Đăng Nhập.png)
-<p align="center"><i>Hình 3.2: Form đăng nhập hệ thống</i></p>
+
+<p align="center"><i>Hình 3.1: Form đăng nhập hệ thống</i></p>
 
 | **Màn hình** | **Đăng nhập** |
 | :--- | :--- |
