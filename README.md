@@ -1,32 +1,32 @@
 # DANH MỤC CÁC KÝ HIỆU, CÁC CHỮ VIẾT TẮT
 
-| STT | Chữ viết tắt | Diễn giải |
-|:---:|:------------:|------------|
-| 1 | AI | Artificial Intelligence – Trí tuệ nhân tạo |
-| 2 | API | Application Programming Interface – Giao diện lập trình ứng dụng |
-| 3 | AR | Augmented Reality – Thực tế tăng cường |
-| 4 | Big Data | Dữ liệu lớn |
-| 5 | CSDL | Cơ sở dữ liệu |
-| 6 | CSV | Comma-Separated Values |
-| 7 | GIS | Geographic Information System – Hệ thống thông tin địa lý |
-| 8 | JWT | JSON Web Token |
-| 9 | KPI | Key Performance Indicator – Chỉ số đánh giá hiệu quả |
-| 10 | KHCN | Khoa học Công nghệ |
-| 11 | LGSP | Local Government Service Platform – Nền tảng tích hợp chia sẻ dữ liệu địa phương |
-| 12 | JSON | JavaScript Object Notation |
-| 13 | SOC | Security Operation Center – Trung tâm giám sát an ninh mạng |
-| 14 | SSO | Single Sign-On – Đăng nhập một lần |
-| 15 | TT&TT | Thông tin và Truyền thông |
-| 16 | UBND | Ủy ban Nhân dân |
-| 17 | VR | Virtual Reality – Thực tế ảo |
-| 18 | WAN | Wide Area Network – Mạng diện rộng |
-| 19 | HTTPS | HyperText Transfer Protocol Secure |
-| 20 | CCCD | Căn cước công dân |
-| 21 | SĐT | Số điện thoại |
-| 22 | VNeID | Nền tảng định danh điện tử quốc gia |
-| 23 | Hue-S | Nền tảng công dân số Huế |
-| 24 | HueIOC | Trung tâm Giám sát điều hành đô thị thông minh Huế |
-| 25 | PostgreSQL | Hệ quản trị cơ sở dữ liệu quan hệ mã nguồn mở |
-| 26 | PostGIS | Tiện ích mở rộng GIS cho PostgreSQL |
+| Chữ viết tắt | Diễn giải |
+|--------------|------------|
+| AI | Artificial Intelligence – Trí tuệ nhân tạo |
+| API | Application Programming Interface – Giao diện lập trình ứng dụng |
+| AR | Augmented Reality – Thực tế tăng cường |
+| Big Data | Dữ liệu lớn |
+| CCCD | Căn cước công dân |
+| CSDL | Cơ sở dữ liệu |
+| CSV | Comma-Separated Values |
+| GIS | Geographic Information System – Hệ thống thông tin địa lý |
+| HTTPS | HyperText Transfer Protocol Secure |
+| HueIOC | Trung tâm Giám sát điều hành đô thị thông minh Huế |
+| Hue-S | Nền tảng công dân số Huế |
+| JSON | JavaScript Object Notation |
+| JWT | JSON Web Token |
+| KHCN | Khoa học Công nghệ |
+| KPI | Key Performance Indicator – Chỉ số đánh giá hiệu quả |
+| LGSP | Local Government Service Platform – Nền tảng tích hợp chia sẻ dữ liệu địa phương |
+| PostGIS | Tiện ích mở rộng GIS cho PostgreSQL |
+| PostgreSQL | Hệ quản trị cơ sở dữ liệu quan hệ mã nguồn mở |
+| SĐT | Số điện thoại |
+| SOC | Security Operation Center – Trung tâm giám sát an ninh mạng |
+| SSO | Single Sign-On – Đăng nhập một lần |
+| TT&TT | Thông tin và Truyền thông |
+| UBND | Ủy ban Nhân dân |
+| VNeID | Nền tảng định danh điện tử quốc gia |
+| VR | Virtual Reality – Thực tế ảo |
+| WAN | Wide Area Network – Mạng diện rộng |
 
-**Tổng số chữ viết tắt: 26**
+*Tổng số chữ viết tắt: 26*
