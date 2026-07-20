@@ -29,4 +29,5 @@
 | VR | Virtual Reality – Thực tế ảo |
 | WAN | Wide Area Network – Mạng diện rộng |
 
-*Tổng số chữ viết tắt: 26*
+_______________
+Link Figma: https://www.figma.com/design/OpVSrPFnSjAPRBcMyqlW7N/H%E1%BB%87-Th%E1%BB%91ng-CSDL-Du-L%E1%BB%8Bch-Hu%E1%BA%BF?t=8yi20Q6CLB1Wp7Iq-0
